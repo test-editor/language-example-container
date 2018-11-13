@@ -1,0 +1,12 @@
+sudo: false
+services:
+- docker
+script:
+- docker build . -t testeditor/git-examples
+- if [[ ( "$TRAVIS_PULL_REQUEST" = "false" ) && (( "$TRAVIS_BRANCH" = "master" ) || ( "$TRAVIS_TAG" != "" )) ]]; then export TE_DEPLOY=true; fi
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    condition: "$TE_DEPLOY != ''"
+    all_branches: true

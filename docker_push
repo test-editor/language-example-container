@@ -1,0 +1,9 @@
+#!/bin/sh
+echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+docker push testeditor/git-examples:snapshot
+if [[ $TRAVIS_TAG = v* ]]; then
+  docker tag testeditor/git-examples:snapshot testeditor/git-examples:$TRAVIS_TAG
+  docker push testeditor/git-examples:$TRAVIS_TAG
+  docker tag testeditor/git-examples:snapshot testeditor/git-examples:latest
+  docker push testeditor/git-examples:latest
+fi
