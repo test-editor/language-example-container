@@ -2,7 +2,7 @@ sudo: false
 services:
 - docker
 script:
-- docker build . -t testeditor/git-examples
+- docker build . -t testeditor/git-examples:snapshot
 - if [[ ( "$TRAVIS_PULL_REQUEST" = "false" ) && (( "$TRAVIS_BRANCH" = "master" ) || ( "$TRAVIS_TAG" != "" )) ]]; then export TE_DEPLOY=true; fi
 deploy:
   provider: script
