@@ -11,7 +11,7 @@ chmod -R 600 .ssh/*
 # Checking permissions and fixing SGID bit in repos folder
 # More info: https://github.com/jkarlosb/git-server-docker/issues/1
 cd /git-server/repos
-git clone http://github.com/test-editor/language-examples.git --bare
+git clone https://github.com/test-editor/language-examples --bare
 chown -R git:git .
 chmod -R ug+rwX .
 find . -type d -exec chmod g+s '{}' +

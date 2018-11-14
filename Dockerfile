@@ -24,6 +24,7 @@ RUN mkdir -p /git-server/keys \
 COPY sshd_config /etc/ssh/sshd_config
 COPY run.sh run.sh
 COPY id_rsa.pub /git-server/keys/id_rsa.pub
+COPY healthcheck.sh /git-server/healthcheck.sh
 
 EXPOSE 22
 
